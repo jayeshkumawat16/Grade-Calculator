@@ -1,0 +1,125 @@
+<!-- Project 5: Student Result & Grade Calculator
+     Made by: Jayesh Kumawat, Roll No: 12345 -->
+     <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Result & Grade Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+
+    <header class="top">
+      <h1>Student Result &amp; Grade Calculator</h1>
+      <button id="themeBtn" class="ghost" type="button" aria-label="Toggle dark or light theme">Dark mode</button>
+    </header>
+
+    <div class="layout">
+
+      <!-- ===== INPUT FORM ===== -->
+      <section class="panel">
+        <h2>Enter marks</h2>
+
+        <form id="resultForm" novalidate>
+          <div class="field">
+            <label for="studentName">Student name</label>
+            <input type="text" id="studentName" placeholder="e.g. Aarav Sharma" autocomplete="off" />
+            <small class="error" id="err-studentName"></small>
+          </div>
+
+          <div class="marks-grid">
+            <div class="field">
+              <label for="m1">Mathematics</label>
+              <input type="number" id="m1" class="mark" data-subject="Mathematics" placeholder="0 - 100" />
+              <small class="error"></small>
+            </div>
+            <div class="field">
+              <label for="m2">Physics</label>
+              <input type="number" id="m2" class="mark" data-subject="Physics" placeholder="0 - 100" />
+              <small class="error"></small>
+            </div>
+            <div class="field">
+              <label for="m3">Chemistry</label>
+              <input type="number" id="m3" class="mark" data-subject="Chemistry" placeholder="0 - 100" />
+              <small class="error"></small>
+            </div>
+            <div class="field">
+              <label for="m4">English</label>
+              <input type="number" id="m4" class="mark" data-subject="English" placeholder="0 - 100" />
+              <small class="error"></small>
+            </div>
+            <div class="field">
+              <label for="m5">Computer Science</label>
+              <input type="number" id="m5" class="mark" data-subject="Computer Science" placeholder="0 - 100" />
+              <small class="error"></small>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="primary">Calculate result</button>
+            <button type="button" id="resetBtn" class="ghost">Reset</button>
+          </div>
+        </form>
+
+        <!-- Grading rules shown on the page (required by the brief) -->
+        <h3>Grading rules</h3>
+        <table class="rules">
+          <thead><tr><th>Percentage</th><th>Grade</th></tr></thead>
+          <tbody>
+            <tr><td>90 and above</td><td>A+</td></tr>
+            <tr><td>80 to 89.99</td><td>A</td></tr>
+            <tr><td>70 to 79.99</td><td>B</td></tr>
+            <tr><td>60 to 69.99</td><td>C</td></tr>
+            <tr><td>50 to 59.99</td><td>D</td></tr>
+            <tr><td>40 to 49.99</td><td>E</td></tr>
+            <tr><td>Below 40</td><td>F</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Pass: at least 40 in every subject. Failing any subject means the overall status is Fail and the grade is F.</p>
+      </section>
+
+      <!-- ===== RESULT CARD ===== -->
+      <section class="panel" id="resultPanel">
+        <div id="placeholder" class="placeholder">
+          Fill in the marks and select <strong>Calculate result</strong> to see the report card here.
+        </div>
+
+        <div id="resultCard" class="result hidden" aria-live="polite">
+          <div class="result-head">
+            <div>
+              <p class="muted">Report card</p>
+              <h2 id="rName"></h2>
+            </div>
+            <span id="rStatus" class="badge"></span>
+          </div>
+
+          <div class="stats">
+            <div><span class="muted">Total</span><strong id="rTotal"></strong></div>
+            <div><span class="muted">Average</span><strong id="rAverage"></strong></div>
+            <div><span class="muted">Percentage</span><strong id="rPercent"></strong></div>
+            <div><span class="muted">Grade</span><strong id="rGrade"></strong></div>
+          </div>
+
+          <div class="bar" role="progressbar" aria-label="Percentage" aria-valuemin="0" aria-valuemax="100">
+            <div id="barFill" class="bar-fill"></div>
+          </div>
+
+          <p id="rMessage" class="message"></p>
+
+          <table class="subjects">
+            <thead><tr><th>Subject</th><th>Marks</th><th>Status</th></tr></thead>
+            <tbody id="subjectRows"></tbody>
+          </table>
+
+          <button type="button" id="printBtn" class="ghost">Print result</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
